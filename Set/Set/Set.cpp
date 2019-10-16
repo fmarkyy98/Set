@@ -1,20 +1,77 @@
-// Set.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+
+using namespace std;
+
+struct Node
+{
+	string brand;
+	int value = 0;
+};
+
+Node set[20];
+int setCount = 0;
+
+int setIndexOf(string item)
+{
+	int index = -1;
+	bool found = false;
+
+	int i = 0;
+	while (i < setCount && !found)
+	{
+		if (set[i].brand == item)
+		{
+			found = true;
+			index = i;
+		}
+		++i;
+	}
+	return index;
+}
+
+bool setContains(string item)
+{
+	bool result = setIndexOf(item) != -1;
+	return result;
+}
+
+void setAdd(string item)
+{
+	if (!setContains(item))
+	{
+		set[setCount].brand = item;
+		++set[setCount].value;
+		++setCount;
+	}
+	else
+	{
+		++set[setIndexOf(item)].value;
+	}
+}
+
+string setToString()
+{
+	for (int i = 0; i < setCount; ++i)
+	{
+		// TODO
+	}
+	return "";
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; ++i)
+	{
+		string text;
+		int num;
+		cin >> text;
+		cin >> num;
+		if (num > 500)
+		{
+			setAdd(text);
+		}
+	}
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
