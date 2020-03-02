@@ -1,77 +1,26 @@
 #include <iostream>
+#include "Set.h"
 
 using namespace std;
 
-struct Node
-{
-	string brand;
-	int value = 0;
-};
-
-Node set[20];
-int setCount = 0;
-
-int setIndexOf(string item)
-{
-	int index = -1;
-	bool found = false;
-
-	int i = 0;
-	while (i < setCount && !found)
-	{
-		if (set[i].brand == item)
-		{
-			found = true;
-			index = i;
-		}
-		++i;
-	}
-	return index;
-}
-
-bool setContains(string item)
-{
-	bool result = setIndexOf(item) != -1;
-	return result;
-}
-
-void setAdd(string item)
-{
-	if (!setContains(item))
-	{
-		set[setCount].brand = item;
-		++set[setCount].value;
-		++setCount;
-	}
-	else
-	{
-		++set[setIndexOf(item)].value;
-	}
-}
-
-string setToString()
-{
-	for (int i = 0; i < setCount; ++i)
-	{
-		// TODO
-	}
-	return "";
-}
-
 int main()
 {
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; ++i)
-	{
-		string text;
-		int num;
-		cin >> text;
-		cin >> num;
-		if (num > 500)
-		{
-			setAdd(text);
-		}
-	}
+	Set ps1;
+
+	vector<int> values{ 2,3,5,7,12,13 };
+	Set ps2(values);
+
+	ps1.add(2);
+	ps1.add(3);
+	ps1.add(5);
+	ps1.add(7);
+	ps1.add(11);
+	cout << ps1 << ps1.getEvenValuesCount() << endl;
+	ps1.remove(5);
+	cout << ps1 << ps1.getEvenValuesCount() << endl;
+	cout << ps2 << ps2.getEvenValuesCount() << endl;
+	cout << ps2.contains(5) << endl;
+
+	cout << "Hello World!\n";
 	return 0;
 }
