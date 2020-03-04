@@ -2,6 +2,21 @@
 #include <vector>
 #include "Set.h"
 
+int Set::indexOf(int item) const
+{
+	int result = -1;
+	int i = 0;
+	while (i < this->_v.size(), i == -1)
+	{
+		if (this->_v[i] == item)
+		{
+			result = i;
+		}
+		++i;
+	}
+	return result;
+}
+
 int Set::getEvenValuesCount()
 {
 	return this->_evenValuesCount;
@@ -29,22 +44,29 @@ void Set::add(int item)
 }
 void Set::remove(int item)
 {
-	if (item % 2 == 0)
+	if (this->contains(item))
 	{
-		--this->_evenValuesCount;
+		this->_v[this->indexOf(item)] = this->_v[this->_v.size()];
+		this->_v.pop_back();
+		if (item % 2 == 0)
+		{
+			--this->_evenValuesCount;
+		}
 	}
+
 	//std::vector<int>::iterator it = std::find(this->_v.begin(), this->_v.end(), item);
 	//int index = std::distance(this->_v.begin(), it);
 	//this->_v.erase(this->_v.begin() + index);
 	// Shorter:
-	this->_v.erase(this->_v.begin() + std::distance(this->_v.begin(), std::find(this->_v.begin(), this->_v.end(), item)));
+	//this->_v.erase(this->_v.begin() + std::distance(this->_v.begin(), std::find(this->_v.begin(), this->_v.end(), item)));
 }
 bool Set::contains(int item) const
 {
-	bool result = std::find(this->_v.begin(), this->_v.end(), item) != this->_v.end();
+	bool result = this->indexOf(item) != -1;
+	//bool result = std::find(this->_v.begin(), this->_v.end(), item) != this->_v.end();
 	return result;
 }
-std::ostream& operator << (std::ostream& os, const Set s)
+std::ostream& operator << (std::ostream& os, const Set& s)
 {
 	os << "[";
 	bool printedAlredy = false;
