@@ -6,7 +6,7 @@ int Set::indexOf(int item) const
 {
 	int result = -1;
 	int i = 0;
-	while (i < this->_v.size(), i == -1)
+	while (i < this->_v.size() && i == -1)
 	{
 		if (this->_v[i] == item)
 		{
