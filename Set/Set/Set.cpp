@@ -46,12 +46,12 @@ void Set::remove(int item)
 {
 	if (this->contains(item))
 	{
-		this->_v[this->indexOf(item)] = this->_v[this->_v.size()];
-		this->_v.pop_back();
 		if (item % 2 == 0)
 		{
 			--this->_evenValuesCount;
 		}
+		this->_v[this->indexOf(item)] = this->_v[this->_v.size()];
+		this->_v.pop_back();
 	}
 
 	//std::vector<int>::iterator it = std::find(this->_v.begin(), this->_v.end(), item);
