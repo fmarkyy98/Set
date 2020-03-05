@@ -11,7 +11,13 @@ private:
 	int indexOf(int item) const;
 
 public:
-	int getEvenValuesCount();
+	enum Exception
+	{
+		alreadyContainsValueException,
+		doesNotContainValueException
+	};
+
+	int getEvenValuesCount() const;
 
 	Set();
 	Set(std::vector<int>& v);
