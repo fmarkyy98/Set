@@ -51,7 +51,7 @@ void Menu::menuEven()
 }
 void Menu::menuHelp()
 {
-	std::cout << addInfo << removeInfo << containsInfo << helpInfo << END;
+	std::cout << addInfo << removeInfo << containsInfo << evenInfo << helpInfo << END;
 }
 
 void Menu::run()
