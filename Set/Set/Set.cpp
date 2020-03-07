@@ -44,7 +44,7 @@ void Set::add(int item)
 	}
 	else
 	{
-		throw Exception::alreadyContainsValueException;
+		throw alreadyContainsValueException;
 	}
 }
 void Set::remove(int item)
@@ -60,7 +60,7 @@ void Set::remove(int item)
 	}
 	else
 	{
-		throw Exception::doesNotContainValueException;
+		throw doesNotContainValueException;
 	}
 }
 bool Set::contains(int item) const
